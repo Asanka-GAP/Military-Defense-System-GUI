@@ -193,6 +193,7 @@ class MainController extends JFrame implements Observable, ChangeListener {
     }
 
     MainController() {
+
         observers = new ArrayList<>();
         observers.add(helicopter);
         observers.add(tank);
@@ -325,6 +326,7 @@ class MainController extends JFrame implements Observable, ChangeListener {
         clearBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 if (clearBtn.isSelected()) {
+
                     if (rangeBar.getValue() >= 20) {
                         sendMsg("Area is clear, STOP shooting..");
                     }
@@ -344,29 +346,32 @@ class MainController extends JFrame implements Observable, ChangeListener {
                 if (Integer.parseInt(helicopter.ammoAmountCount.getText()) < 4000 && comboBox2.getSelectedIndex() == 0
                         && comboBox3.getSelectedIndex() == 0) {
                     helicopter.ammoAmountCount.setText("4000");
-                    helicopter.ammo1=true;
-                    helicopter.ammo2=true;
+                    helicopter.ammo1 = true;
+                    helicopter.ammo2 = true;
                     sendPrivateMsg("You got a full supply of AMMO", comboBox3.getSelectedIndex());
                 } else if (Integer.parseInt(tank.ammoAmountCount.getText()) < 5000 && comboBox2.getSelectedIndex() == 0
                         && comboBox3.getSelectedIndex() == 1) {
                     tank.ammoAmountCount.setText("5000");
-                    tank.ammo1=true;
-                    tank.ammo2=true;
+                    tank.ammo1 = true;
+                    tank.ammo2 = true;
                     sendPrivateMsg("You got a full supply of AMMO", comboBox3.getSelectedIndex());
                 } else if (Integer.parseInt(submarine.ammoAmountCount.getText()) < 5000
                         && comboBox2.getSelectedIndex() == 0 && comboBox3.getSelectedIndex() == 2) {
                     submarine.ammoAmountCount.setText("5000");
-                    submarine.ammo1=true;
-                    submarine.ammo2=true;
+                    submarine.ammo1 = true;
+                    submarine.ammo2 = true;
                     sendPrivateMsg("You got a full supply of AMMO", comboBox3.getSelectedIndex());
                 } else {
-                    if (helicopter.ammoAmountCount.getText().equals("4000")  && comboBox3.getSelectedIndex() == 0 && comboBox2.getSelectedIndex() == 0) {
+                    if (helicopter.ammoAmountCount.getText().equals("4000") && comboBox3.getSelectedIndex() == 0
+                            && comboBox2.getSelectedIndex() == 0) {
                         JOptionPane.showMessageDialog(null, "The helicopter's ammo is full..", "Ammo full.!!!",
                                 JOptionPane.INFORMATION_MESSAGE);
-                    } else if (tank.ammoAmountCount.getText().equals("5000")   && comboBox3.getSelectedIndex() == 1 && comboBox2.getSelectedIndex() == 0) {
+                    } else if (tank.ammoAmountCount.getText().equals("5000") && comboBox3.getSelectedIndex() == 1
+                            && comboBox2.getSelectedIndex() == 0) {
                         JOptionPane.showMessageDialog(null, "The tank's ammo is full..", "Ammo full.!!!",
                                 JOptionPane.INFORMATION_MESSAGE);
-                    } else if (submarine.ammoAmountCount.getText().equals("5000")  && comboBox3.getSelectedIndex() == 2 && comboBox2.getSelectedIndex() == 0) {
+                    } else if (submarine.ammoAmountCount.getText().equals("5000") && comboBox3.getSelectedIndex() == 2
+                            && comboBox2.getSelectedIndex() == 0) {
                         JOptionPane.showMessageDialog(null, "The submarine's ammo is full..", "Ammo full.!!!",
                                 JOptionPane.INFORMATION_MESSAGE);
 
@@ -376,29 +381,32 @@ class MainController extends JFrame implements Observable, ChangeListener {
                 if (Integer.parseInt(helicopter.fuelAmountCount.getText()) < 600 && comboBox2.getSelectedIndex() == 1
                         && comboBox3.getSelectedIndex() == 0) {
                     helicopter.fuelAmountCount.setText("600");
-                    helicopter.ammo1=true;
-                    helicopter.ammo2=true;
+                    helicopter.fuel1 = true;
+                    helicopter.fuel2 = true;
                     sendPrivateMsg("You got a full supply of FUEL", comboBox3.getSelectedIndex());
                 } else if (Integer.parseInt(tank.fuelAmountCount.getText()) < 600 && comboBox2.getSelectedIndex() == 1
                         && comboBox3.getSelectedIndex() == 1) {
                     tank.fuelAmountCount.setText("600");
-                    tank.ammo1=true;
-                    tank.ammo2=true;
+                    tank.fuel1 = true;
+                    tank.fuel2 = true;
                     sendPrivateMsg("You got a full supply of FUEL", comboBox3.getSelectedIndex());
                 } else if (Integer.parseInt(submarine.fuelAmountCount.getText()) < 800
                         && comboBox2.getSelectedIndex() == 1 && comboBox3.getSelectedIndex() == 2) {
                     submarine.fuelAmountCount.setText("800");
-                    submarine.ammo1=true;
-                    submarine.ammo2=true;
+                    submarine.fuel1 = true;
+                    submarine.fuel2 = true;
                     sendPrivateMsg("You got a full supply of FUEL", comboBox3.getSelectedIndex());
                 } else {
-                    if (helicopter.fuelAmountCount.getText().equals("600")  && comboBox3.getSelectedIndex() == 0 && comboBox2.getSelectedIndex() == 1) {
+                    if (helicopter.fuelAmountCount.getText().equals("600") && comboBox3.getSelectedIndex() == 0
+                            && comboBox2.getSelectedIndex() == 1) {
                         JOptionPane.showMessageDialog(null, "The helicopter's fuel is full..", "Fuel full.!!!",
                                 JOptionPane.INFORMATION_MESSAGE);
-                    } else if (tank.fuelAmountCount.getText().equals("600")   && comboBox3.getSelectedIndex() == 1 && comboBox2.getSelectedIndex() == 1) {
+                    } else if (tank.fuelAmountCount.getText().equals("600") && comboBox3.getSelectedIndex() == 1
+                            && comboBox2.getSelectedIndex() == 1) {
                         JOptionPane.showMessageDialog(null, "The tank's fuel is full..", "Fuel full.!!!",
                                 JOptionPane.INFORMATION_MESSAGE);
-                    } else if (submarine.fuelAmountCount.getText().equals("800")  && comboBox3.getSelectedIndex() == 2 && comboBox2.getSelectedIndex() == 1) {
+                    } else if (submarine.fuelAmountCount.getText().equals("800") && comboBox3.getSelectedIndex() == 2
+                            && comboBox2.getSelectedIndex() == 1) {
                         JOptionPane.showMessageDialog(null, "The submarine's fuel is full..", "Fuel full.!!!",
                                 JOptionPane.INFORMATION_MESSAGE);
 
@@ -439,16 +447,15 @@ class MainController extends JFrame implements Observable, ChangeListener {
 
 class Helicopter extends JFrame implements Observer, KeyListener {
     JRadioButton clearBtn;
-    private JLabel positionTxt, clearTxt, health, soldierCount, activeSoldier, fuelAmount, ammoAmount,
-            activeSoliderCount,
-            deadSoldier;
+    private JLabel positionTxt, clearTxt, health, soldierCount,
+            activeSoldier, fuelAmount, ammoAmount, activeSoliderCount, deadSoldier;
     JLabel fuelAmountCount, ammoAmountCount;
     private JTextArea recievedMsg;
     private JTextField msgField, deadCount;
     JButton shoot, missle, laser, sendBtn;
     private JSlider rangeBar;
     MainController m;
-    boolean ammo1, ammo2;
+    boolean ammo1, ammo2, fuel1, fuel2;
 
     public void keyPressed(KeyEvent e) {
 
@@ -470,7 +477,7 @@ class Helicopter extends JFrame implements Observer, KeyListener {
                     JOptionPane.showMessageDialog(null, "The entire army was fallen out..Mission aborted..Fall back",
                             "Mission Failed.!!!",
                             JOptionPane.ERROR_MESSAGE);
-                          
+
                 }
             } else {
                 deadCount.setBorder(BorderFactory.createLineBorder(Color.RED));
@@ -506,6 +513,8 @@ class Helicopter extends JFrame implements Observer, KeyListener {
     public Helicopter(MainController m) {
         ammo1 = true;
         ammo2 = true;
+        fuel1 = true;
+        fuel2 = true;
         this.m = m;
         setSize(800, 400);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -671,7 +680,15 @@ class Helicopter extends JFrame implements Observer, KeyListener {
                 int fuel = Integer.parseInt(fuelAmountCount.getText());
                 if (fuel <= 0) {
                     fuelAmountCount.setText("0");
+                    if (fuel2) {
+                        m.getNotification(". The HELICOPTER is OUT OF FUEL..Provide an IMMEDIATE supply of FUEL");
+                        fuel2 = false;
+                    }
                     return;
+                }
+                if (fuel == 300 && fuel1) {
+                    fuel1 = false;
+                    m.getNotification(". The helicopter's fuel capacity was reduced by 50%..ready to supply fuel");
                 }
                 if (count <= 2000 && ammo1 == true) {
                     m.getNotification(
@@ -698,7 +715,15 @@ class Helicopter extends JFrame implements Observer, KeyListener {
                 int fuel = Integer.parseInt(fuelAmountCount.getText());
                 if (fuel <= 0) {
                     fuelAmountCount.setText("0");
+                    if (fuel2) {
+                        m.getNotification(". The HELICOPTER is OUT OF FUEL..Provide an IMMEDIATE supply of FUEL");
+                        fuel2 = false;
+                    }
                     return;
+                }
+                if (fuel == 300 && fuel1) {
+                    fuel1 = false;
+                    m.getNotification(". The helicopter's fuel capacity was reduced by 50%..ready to supply fuel");
                 }
                 if (count <= 2000 && ammo1 == true) {
                     m.getNotification(
@@ -725,7 +750,15 @@ class Helicopter extends JFrame implements Observer, KeyListener {
                 int fuel = Integer.parseInt(fuelAmountCount.getText());
                 if (fuel <= 0) {
                     fuelAmountCount.setText("0");
+                    if (fuel2) {
+                        m.getNotification(". The HELICOPTER is OUT OF FUEL..Provide an IMMEDIATE supply of FUEL");
+                        fuel2 = false;
+                    }
                     return;
+                }
+                if (fuel == 300 && fuel1) {
+                    fuel1 = false;
+                    m.getNotification(". The helicopter's fuel capacity was reduced by 50%..ready to supply fuel");
                 }
                 if (count <= 2000 && ammo1 == true) {
                     m.getNotification(
@@ -752,7 +785,7 @@ class Tank extends JFrame implements Observer, KeyListener {
     JButton shoot, missle, redar, rotateShoot, sendBtn;
     private JSlider rangeBar;
     MainController m;
-    boolean ammo1, ammo2;
+    boolean ammo1, ammo2, fuel1, fuel2;
 
     public void keyPressed(KeyEvent e) {
 
@@ -807,6 +840,8 @@ class Tank extends JFrame implements Observer, KeyListener {
     Tank(MainController m) {
         ammo1 = true;
         ammo2 = true;
+        fuel1 = true;
+        fuel2 = true;
         this.m = m;
         setSize(800, 400);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -978,7 +1013,15 @@ class Tank extends JFrame implements Observer, KeyListener {
                 int fuel = Integer.parseInt(fuelAmountCount.getText());
                 if (fuel <= 0) {
                     fuelAmountCount.setText("0");
+                    if (fuel2) {
+                        m.getNotification(". The TANK is OUT OF FUEL..Provide an IMMEDIATE supply of FUEL");
+                        fuel2 = false;
+                    }
                     return;
+                }
+                if (fuel == 300 && fuel1) {
+                    fuel1 = false;
+                    m.getNotification(". The tank's fuel capacity was reduced by 50%..ready to supply fuel");
                 }
                 if (count <= 2500 && ammo1 == true) {
                     m.getNotification(". The tank's ammo capacity was reduced by 50%..ready to supply ammunition");
@@ -1004,7 +1047,15 @@ class Tank extends JFrame implements Observer, KeyListener {
                 int fuel = Integer.parseInt(fuelAmountCount.getText());
                 if (fuel <= 0) {
                     fuelAmountCount.setText("0");
+                    if (fuel2) {
+                        m.getNotification(". The TANK is OUT OF FUEL..Provide an IMMEDIATE supply of FUEL");
+                        fuel2 = false;
+                    }
                     return;
+                }
+                if (fuel == 300 && fuel1) {
+                    fuel1 = false;
+                    m.getNotification(". The tank's fuel capacity was reduced by 50%..ready to supply fuel");
                 }
                 if (count <= 2500 && ammo1 == true) {
                     m.getNotification(". The tank's ammo capacity was reduced by 50%..ready to supply ammunition");
@@ -1030,7 +1081,15 @@ class Tank extends JFrame implements Observer, KeyListener {
                 int fuel = Integer.parseInt(fuelAmountCount.getText());
                 if (fuel <= 0) {
                     fuelAmountCount.setText("0");
+                    if (fuel2) {
+                        m.getNotification(". The TANK is OUT OF FUEL..Provide an IMMEDIATE supply of FUEL");
+                        fuel2 = false;
+                    }
                     return;
+                }
+                if (fuel == 300 && fuel1) {
+                    fuel1 = false;
+                    m.getNotification(". The tank's fuel capacity was reduced by 50%..ready to supply fuel");
                 }
                 if (count <= 2500 && ammo1 == true) {
                     m.getNotification(". The tank's ammo capacity was reduced by 50%..ready to supply ammunition");
@@ -1056,7 +1115,15 @@ class Tank extends JFrame implements Observer, KeyListener {
                 int fuel = Integer.parseInt(fuelAmountCount.getText());
                 if (fuel <= 0) {
                     fuelAmountCount.setText("0");
+                    if (fuel2) {
+                        m.getNotification(". The TAnk is OUT OF FUEL..Provide an IMMEDIATE supply of FUEL");
+                        fuel2 = false;
+                    }
                     return;
+                }
+                if (fuel == 300 && fuel1) {
+                    fuel1 = false;
+                    m.getNotification(". The tank's fuel capacity was reduced by 50%..ready to supply fuel");
                 }
                 if (count <= 2500 && ammo1 == true) {
                     m.getNotification(". The tank's ammo capacity was reduced by 50%..ready to supply ammunition");
@@ -1082,7 +1149,7 @@ class Submarine extends JFrame implements Observer, KeyListener {
     JButton shoot, sonar, tomahawk, trident, topido, sendBtn;
     private JSlider rangeBar, oxygenBar;
     MainController m;
-    boolean ammo1, ammo2;
+    boolean ammo1, ammo2, fuel1, fuel2;
 
     public void keyPressed(KeyEvent e) {
 
@@ -1139,6 +1206,9 @@ class Submarine extends JFrame implements Observer, KeyListener {
     Submarine(MainController m) {
         ammo1 = true;
         ammo2 = true;
+        fuel1 = true;
+        fuel2 = true;
+
         this.m = m;
         setSize(800, 400);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -1338,7 +1408,15 @@ class Submarine extends JFrame implements Observer, KeyListener {
                 int fuel = Integer.parseInt(fuelAmountCount.getText());
                 if (fuel <= 0) {
                     fuelAmountCount.setText("0");
+                    if (fuel2) {
+                        m.getNotification(". The SUBMARINE is OUT OF FUEL..Provide an IMMEDIATE supply of FUEL");
+                        fuel2 = false;
+                    }
                     return;
+                }
+                if (fuel == 300 && fuel1) {
+                    fuel1 = false;
+                    m.getNotification(". The submarine's fuel capacity was reduced by 50%..ready to supply fuel");
                 }
                 if (count <= 2500 && ammo1 == true) {
                     m.getNotification(". The submarine's ammo capacity was reduced by 50%..ready to supply ammunition");
@@ -1364,7 +1442,15 @@ class Submarine extends JFrame implements Observer, KeyListener {
                 int fuel = Integer.parseInt(fuelAmountCount.getText());
                 if (fuel <= 0) {
                     fuelAmountCount.setText("0");
+                    if (fuel2) {
+                        m.getNotification(". The SUBMARINE is OUT OF FUEL..Provide an IMMEDIATE supply of FUEL");
+                        fuel2 = false;
+                    }
                     return;
+                }
+                if (fuel == 300 && fuel1) {
+                    fuel1 = false;
+                    m.getNotification(". The submarine's fuel capacity was reduced by 50%..ready to supply fuel");
                 }
                 if (count <= 2500 && ammo1 == true) {
                     m.getNotification(". The submarine's ammo capacity was reduced by 50%..ready to supply ammunition");
@@ -1390,7 +1476,15 @@ class Submarine extends JFrame implements Observer, KeyListener {
                 int fuel = Integer.parseInt(fuelAmountCount.getText());
                 if (fuel <= 0) {
                     fuelAmountCount.setText("0");
+                    if (fuel2) {
+                        m.getNotification(". The SUBMARINE is OUT OF FUEL..Provide an IMMEDIATE supply of FUEL");
+                        fuel2 = false;
+                    }
                     return;
+                }
+                if (fuel == 300 && fuel1) {
+                    fuel1 = false;
+                    m.getNotification(". The submarine's fuel capacity was reduced by 50%..ready to supply fuel");
                 }
                 if (count <= 2500 && ammo1 == true) {
                     m.getNotification(". The submarine's ammo capacity was reduced by 50%..ready to supply ammunition");
@@ -1416,7 +1510,15 @@ class Submarine extends JFrame implements Observer, KeyListener {
                 int fuel = Integer.parseInt(fuelAmountCount.getText());
                 if (fuel <= 0) {
                     fuelAmountCount.setText("0");
+                    if (fuel2) {
+                        m.getNotification(". The SUBMARINE is OUT OF FUEL..Provide an IMMEDIATE supply of FUEL");
+                        fuel2 = false;
+                    }
                     return;
+                }
+                if (fuel == 300 && fuel1) {
+                    fuel1 = false;
+                    m.getNotification(". The submarine's fuel capacity was reduced by 50%..ready to supply fuel");
                 }
                 if (count <= 2500 && ammo1 == true) {
                     m.getNotification(". The submarine's ammo capacity was reduced by 50%..ready to supply ammunition");
@@ -1442,7 +1544,15 @@ class Submarine extends JFrame implements Observer, KeyListener {
                 int fuel = Integer.parseInt(fuelAmountCount.getText());
                 if (fuel <= 0) {
                     fuelAmountCount.setText("0");
+                    if (fuel2) {
+                        m.getNotification(". The SUBMARINE is OUT OF FUEL..Provide an IMMEDIATE supply of FUEL");
+                        fuel2 = false;
+                    }
                     return;
+                }
+                if (fuel == 300 && fuel1) {
+                    fuel1 = false;
+                    m.getNotification(". The submarine's fuel capacity was reduced by 50%..ready to supply fuel");
                 }
                 if (count <= 2500 && ammo1 == true) {
                     m.getNotification(". The submarine's ammo capacity was reduced by 50%..ready to supply ammunition");
