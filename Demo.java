@@ -17,6 +17,10 @@ interface Observable {
 
     public void sendPrivateMsg(String str, int num);
 
+    public void getRecievedMsg(String str);
+
+    public void getNotification(String str);
+
     public void commandFire();
 
 }
@@ -36,6 +40,7 @@ class MainController extends JFrame implements Observable, ChangeListener {
     private JTextArea recievedMsg, notifyArea;
     private JButton sendBtn;
     JButton supplyBtn;
+    @SuppressWarnings("rawtypes")
     private JComboBox comboBox, comboBox2, comboBox3;
     private JTextField mainMsg;
     JSlider rangeBar;
@@ -192,6 +197,7 @@ class MainController extends JFrame implements Observable, ChangeListener {
 
     }
 
+    @SuppressWarnings({ "rawtypes", "unchecked" })
     MainController() {
 
         observers = new ArrayList<>();
