@@ -3,7 +3,6 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.ChangeEvent;
-
 import java.util.*;
 
 interface Observable {
@@ -32,6 +31,22 @@ interface Observer {
     public void getMsg(Observable observable, String str);
 }
 
+enum Strength{
+    LOW(20),
+    MEDIUM(40),
+    HIGH(60),
+    STRONG(80),
+    CLOSED(90);
+
+    int level;
+    Strength(int level){
+        
+        this.level=level;
+    
+    }
+
+}
+
 class MainController extends JFrame implements Observable, ChangeListener {
     private JRadioButton clearBtn, privacyBtn;
     private JLabel clearAreaTxt, privacyTxt, soldierCount, fuelAmount, fuelAmountCount, ammoAmount, soldierCountTxt,
@@ -48,6 +63,13 @@ class MainController extends JFrame implements Observable, ChangeListener {
     Helicopter helicopter = new Helicopter(this);
     Tank tank = new Tank(this);
     Submarine submarine = new Submarine(this);
+
+    Strength low=Strength.LOW;
+    Strength medium=Strength.MEDIUM;
+    Strength high=Strength.HIGH;
+    Strength strong=Strength.STRONG;
+    Strength closed=Strength.CLOSED;
+    
 
     public void getRecievedMsg(String str) {
         int line = recievedMsg.getLineCount();
@@ -85,7 +107,7 @@ class MainController extends JFrame implements Observable, ChangeListener {
 
     public void commandFire() {
 
-        if (rangeBar.getValue() >= 20 && rangeBar.getValue() < 40) {
+        if (rangeBar.getValue() >= low.level && rangeBar.getValue() < medium.level) {
             if (helicopter.clearBtn.isSelected()) {
                 helicopter.shoot.setEnabled(true);
                 helicopter.missle.setEnabled(false);
@@ -99,7 +121,7 @@ class MainController extends JFrame implements Observable, ChangeListener {
                 submarine.sonar.setEnabled(false);
             }
         }
-        if (rangeBar.getValue() >= 40 && rangeBar.getValue() < 60) {
+        if (rangeBar.getValue() >= medium.level && rangeBar.getValue() < high.level) {
             if (helicopter.clearBtn.isSelected()) {
                 helicopter.missle.setEnabled(true);
                 helicopter.shoot.setEnabled(true);
@@ -117,7 +139,7 @@ class MainController extends JFrame implements Observable, ChangeListener {
             }
 
         }
-        if (rangeBar.getValue() >= 60 && rangeBar.getValue() < 80) {
+        if (rangeBar.getValue() >= high.level && rangeBar.getValue() < strong.level) {
             if (helicopter.clearBtn.isSelected()) {
                 helicopter.laser.setEnabled(true);
                 helicopter.missle.setEnabled(true);
@@ -137,7 +159,7 @@ class MainController extends JFrame implements Observable, ChangeListener {
             }
 
         }
-        if (rangeBar.getValue() >= 80 && rangeBar.getValue() < 90) {
+        if (rangeBar.getValue() >= strong.level && rangeBar.getValue() < closed.level) {
             if (helicopter.clearBtn.isSelected()) {
                 helicopter.laser.setEnabled(true);
                 helicopter.missle.setEnabled(true);
@@ -158,7 +180,7 @@ class MainController extends JFrame implements Observable, ChangeListener {
             }
 
         }
-        if (rangeBar.getValue() >= 90) {
+        if (rangeBar.getValue() >= closed.level) {
             if (helicopter.clearBtn.isSelected()) {
                 helicopter.laser.setEnabled(true);
                 helicopter.missle.setEnabled(true);
@@ -178,7 +200,7 @@ class MainController extends JFrame implements Observable, ChangeListener {
                 submarine.topido.setEnabled(true);
             }
         }
-        if (rangeBar.getValue() < 20) {
+        if (rangeBar.getValue() < low.level) {
             helicopter.shoot.setEnabled(false);
             helicopter.laser.setEnabled(false);
             helicopter.missle.setEnabled(false);
@@ -528,6 +550,7 @@ class Helicopter extends JFrame implements Observer, KeyListener {
         setLayout(null);
         setTitle("Helicopter");
         setLocation(790, 0);
+        
 
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(null);
