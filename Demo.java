@@ -31,7 +31,7 @@ interface Observer {
     public void getMsg(Observable observable, String str);
 }
 
-enum Strength{
+enum Strength {
     LOW(20),
     MEDIUM(40),
     HIGH(60),
@@ -39,10 +39,11 @@ enum Strength{
     CLOSED(90);
 
     int level;
-    Strength(int level){
-        
-        this.level=level;
-    
+
+    Strength(int level) {
+
+        this.level = level;
+
     }
 
 }
@@ -64,12 +65,11 @@ class MainController extends JFrame implements Observable, ChangeListener {
     Tank tank = new Tank(this);
     Submarine submarine = new Submarine(this);
 
-    Strength low=Strength.LOW;
-    Strength medium=Strength.MEDIUM;
-    Strength high=Strength.HIGH;
-    Strength strong=Strength.STRONG;
-    Strength closed=Strength.CLOSED;
-    
+    Strength low = Strength.LOW;
+    Strength medium = Strength.MEDIUM;
+    Strength high = Strength.HIGH;
+    Strength strong = Strength.STRONG;
+    Strength closed = Strength.CLOSED;
 
     public void getRecievedMsg(String str) {
         int line = recievedMsg.getLineCount();
@@ -373,19 +373,27 @@ class MainController extends JFrame implements Observable, ChangeListener {
             public void actionPerformed(ActionEvent evt) {
                 if (Integer.parseInt(helicopter.ammoAmountCount.getText()) < 4000 && comboBox2.getSelectedIndex() == 0
                         && comboBox3.getSelectedIndex() == 0) {
+                    ammoAmountCount.setText(Integer.toString(Integer.parseInt(ammoAmountCount.getText())
+                            + (4000 - Integer.parseInt(helicopter.ammoAmountCount.getText()))));
                     helicopter.ammoAmountCount.setText("4000");
                     helicopter.ammo1 = true;
                     helicopter.ammo2 = true;
                     sendPrivateMsg("You got a full supply of AMMO", comboBox3.getSelectedIndex());
                 } else if (Integer.parseInt(tank.ammoAmountCount.getText()) < 5000 && comboBox2.getSelectedIndex() == 0
                         && comboBox3.getSelectedIndex() == 1) {
+                    ammoAmountCount.setText(Integer.toString(Integer.parseInt(ammoAmountCount.getText())
+                            + (5000 - Integer.parseInt(tank.ammoAmountCount.getText()))));
                     tank.ammoAmountCount.setText("5000");
+
                     tank.ammo1 = true;
                     tank.ammo2 = true;
                     sendPrivateMsg("You got a full supply of AMMO", comboBox3.getSelectedIndex());
                 } else if (Integer.parseInt(submarine.ammoAmountCount.getText()) < 5000
                         && comboBox2.getSelectedIndex() == 0 && comboBox3.getSelectedIndex() == 2) {
+                    ammoAmountCount.setText(Integer.toString(Integer.parseInt(ammoAmountCount.getText())
+                            + (5000 - Integer.parseInt(submarine.ammoAmountCount.getText()))));
                     submarine.ammoAmountCount.setText("5000");
+
                     submarine.ammo1 = true;
                     submarine.ammo2 = true;
                     sendPrivateMsg("You got a full supply of AMMO", comboBox3.getSelectedIndex());
@@ -408,19 +416,28 @@ class MainController extends JFrame implements Observable, ChangeListener {
                 }
                 if (Integer.parseInt(helicopter.fuelAmountCount.getText()) < 600 && comboBox2.getSelectedIndex() == 1
                         && comboBox3.getSelectedIndex() == 0) {
+                    fuelAmountCount.setText(Integer.toString(Integer.parseInt(fuelAmountCount.getText())
+                            + (600 - Integer.parseInt(helicopter.fuelAmountCount.getText()))));
                     helicopter.fuelAmountCount.setText("600");
+
                     helicopter.fuel1 = true;
                     helicopter.fuel2 = true;
                     sendPrivateMsg("You got a full supply of FUEL", comboBox3.getSelectedIndex());
                 } else if (Integer.parseInt(tank.fuelAmountCount.getText()) < 600 && comboBox2.getSelectedIndex() == 1
                         && comboBox3.getSelectedIndex() == 1) {
+                    fuelAmountCount.setText(Integer.toString(Integer.parseInt(fuelAmountCount.getText())
+                            + (600 - Integer.parseInt(tank.fuelAmountCount.getText()))));
                     tank.fuelAmountCount.setText("600");
+
                     tank.fuel1 = true;
                     tank.fuel2 = true;
                     sendPrivateMsg("You got a full supply of FUEL", comboBox3.getSelectedIndex());
                 } else if (Integer.parseInt(submarine.fuelAmountCount.getText()) < 800
                         && comboBox2.getSelectedIndex() == 1 && comboBox3.getSelectedIndex() == 2) {
+                    fuelAmountCount.setText(Integer.toString(Integer.parseInt(fuelAmountCount.getText())
+                            + (800 - Integer.parseInt(submarine.fuelAmountCount.getText()))));
                     submarine.fuelAmountCount.setText("800");
+
                     submarine.fuel1 = true;
                     submarine.fuel2 = true;
                     sendPrivateMsg("You got a full supply of FUEL", comboBox3.getSelectedIndex());
@@ -482,6 +499,7 @@ class Helicopter extends JFrame implements Observer, KeyListener {
     private JTextField msgField, deadCount;
     JButton shoot, missle, laser, sendBtn;
     private JSlider rangeBar;
+    private JProgressBar overHeatBar;
     MainController m;
     boolean ammo1, ammo2, fuel1, fuel2;
 
@@ -550,7 +568,6 @@ class Helicopter extends JFrame implements Observer, KeyListener {
         setLayout(null);
         setTitle("Helicopter");
         setLocation(790, 0);
-        
 
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(null);
@@ -580,6 +597,8 @@ class Helicopter extends JFrame implements Observer, KeyListener {
         rangeBar.setPaintLabels(true);
         rangeBar.setOrientation(SwingConstants.VERTICAL);
         mainPanel.add(rangeBar);
+
+        // overHeatBar.setValue(0);
 
         clearTxt = new JLabel("Area Not Cleared");
         clearTxt.setBounds(15, 10, 200, 30);
