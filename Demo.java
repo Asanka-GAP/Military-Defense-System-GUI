@@ -499,7 +499,6 @@ class Helicopter extends JFrame implements Observer, KeyListener {
     private JTextField msgField, deadCount;
     JButton shoot, missle, laser, sendBtn;
     private JSlider rangeBar;
-    private JProgressBar overHeatBar;
     MainController m;
     boolean ammo1, ammo2, fuel1, fuel2;
 
@@ -597,8 +596,6 @@ class Helicopter extends JFrame implements Observer, KeyListener {
         rangeBar.setPaintLabels(true);
         rangeBar.setOrientation(SwingConstants.VERTICAL);
         mainPanel.add(rangeBar);
-
-        // overHeatBar.setValue(0);
 
         clearTxt = new JLabel("Area Not Cleared");
         clearTxt.setBounds(15, 10, 200, 30);
