@@ -223,9 +223,10 @@ class MainController extends JFrame implements Observable, ChangeListener {
     MainController() {
 
         observers = new ArrayList<>();
-        observers.add(helicopter);
-        observers.add(tank);
-        observers.add(submarine);
+
+        addObserver(helicopter);
+        addObserver(tank);
+        addObserver(submarine);
 
         setSize(800, 400);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
